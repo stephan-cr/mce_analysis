@@ -2,6 +2,7 @@
 Parse MCE errors coming from the kernel.
 """
 
+import argparse
 import datetime
 import re
 import sys
@@ -9,8 +10,12 @@ import sys
 import pandas as pd
 
 def main(argv) -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('mce_log')
+    args = parser.parse_args(argv)
+
     mces = []
-    with open(argv[0], 'r', encoding='utf8') as log_file:
+    with open(args.mce_log, 'r', encoding='utf8') as log_file:
         mce_lines = []
         for line in log_file:
             line = line.rstrip(' ')
