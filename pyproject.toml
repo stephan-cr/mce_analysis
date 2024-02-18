@@ -1,0 +1,5 @@
+[project]
+requires-python = ">=3.8"
+
+[project.scripts]
+parse-mces = "parse_mces:main"
